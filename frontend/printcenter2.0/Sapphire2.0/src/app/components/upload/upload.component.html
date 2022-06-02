@@ -1,0 +1,22 @@
+
+        <form [formGroup]="myForm" (ngSubmit)="submit()">
+
+            <div *ngIf="filePath && filePath !== ''">
+              <img [src]="filePath" width="100%" [alt]="myForm.value.name">
+            </div>
+          
+            <input type="file" accept="image/jpeg" (change)="imagePreview($event)">
+           
+        
+          
+            <button type="submit">Upload</button>
+          </form>   
+  <p>
+    OR
+  </p>
+    <div class="mb-3">
+        <label>Choose Multiple Files Photos At Once</label>
+        <input type="file" class="form-control" accept="image/jpeg" (change)="onFileChange()" multiple>
+    </div>
+        <button type="submit">Upload</button><br /> 
+        <div>

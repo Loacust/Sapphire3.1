@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4 offset-sm-4">
+            <form [formGroup]="signIn" >
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" formControlName="email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password">
+                </div>
+
+                <button type="submit" class="submit" [disabled]="signIn.invalid" (click)="login()">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 offset-sm-7">
+            <a mat-button routerLink="../registration">SignUp</a>
+        </div>
+    </div>
+</div>
