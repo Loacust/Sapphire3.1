@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 7;
 const multer = require('multer');
 const Userphotos = require('./Models/photo_info');
+const path = require('path');
 
 app.use(cors());
 app.use('/images', express.static('uploadedimages'));
@@ -99,7 +100,7 @@ const storage = multer.diskStorage({
     },
     filename: function (req,file,cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random()* 1E9)
-        cb(null, file.fieldname + '-' + uniqueSuffix); 
+        cb(null, uniqueSuffix + path.extname(file.originalname)); 
     }
 });
 
