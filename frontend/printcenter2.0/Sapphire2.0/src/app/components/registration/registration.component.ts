@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registration() {
+  register() {
     this.usersService.registration(this.Users.value).subscribe((result)=> {
       console.log(result);
   

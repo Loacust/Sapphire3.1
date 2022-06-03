@@ -17,9 +17,19 @@ registration(formData:object){
 login(formData:object){
    return this.http.post('http://localhost:4000/loginPost', formData)
 }
+photo_upload(formData:any){
+  return this.http.post('http://localhost:4000/imagePost', formData)
+}
 
 current_user_info(){
   return JSON.parse(localStorage.getItem('currentUser')!);
+}
+
+current_user_email(){
+let currentUser = JSON.parse(localStorage.getItem('currentUser')!);
+let data = currentUser.email;
+console.log(data);
+return data;
 }
 
 Authenticated(){

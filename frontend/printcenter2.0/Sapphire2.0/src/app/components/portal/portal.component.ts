@@ -3,7 +3,7 @@ import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { RouterModule, Router } from '@angular/router';
-import { ApphomeComponent } from '../apphome/apphome.component';
+
 
 
 
@@ -27,15 +27,12 @@ export class PortalComponent implements OnInit {
   }
 
   login(){
-    let signIn = this.signIn.value
+    let signIn = this.signIn.value;
     this.usersService.login(signIn).subscribe((result) =>{
       this.router.navigate(['']);
       localStorage.setItem('currentUser',JSON.stringify(result)); 
     });
+   }
 
-
-    
-  }
-  
 }
 

@@ -6,6 +6,7 @@ const cors= require('cors');
 const bcrypt = require('bcrypt');
 const saltRounds = 7;
 const multer = require('multer');
+const Userphotos = require('./Models/photo_info');
 
 app.use(cors());
 app.use('/images', express.static('uploadedimages'));
@@ -19,25 +20,9 @@ config.authenticate().then(function(){
     console.log(err)
 });
 
-//Upload folder 
 
-const storage = multer.diskStorage({
-    destination: function(req, file,cb){
-        cb(null, './uploadedimages');
-    },
-    filename: function (req,file,cb) {
-        cb(null, file.originalname); // need to build a sudo file name generator eventually
-    }
-});
 
-app.post('/imgPost', function(req, res){
-    let task = req.body;
-    Task.create(task).then(function(result){
-        res.redirect('/');
-    }).catch(function(err){
-        res.send(err);
-    })
-});
+
 
 
 
@@ -55,7 +40,7 @@ app.get('/', function (req, res) {
 
 
 
-
+//Registration
 app.post('/regPost',function (req,res){
     let plainPassword = req.body.password;
 
@@ -77,7 +62,7 @@ app.post('/regPost',function (req,res){
 });
 });
 
-
+//Login Post
 app.post('/loginPost', function(req,res){
 
     let email = req.body.email;
@@ -107,6 +92,36 @@ app.post('/loginPost', function(req,res){
         res.status(500).send(err);
     });
 });  
+
+const storage = multer.diskStorage({
+    destination: function(req,file,cb){
+        cb(null, './uploadedimages');
+    },
+    filename: function (req,file,cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random()* 1E9)
+        cb(null, file.fieldname + '-' + uniqueSuffix); 
+    }
+});
+
+//Image upload post
+app.post('/imagePost',multer({storage}).single('image'), function(req,res){
+    let upload_Data = {
+        email: req.body.email,
+        image: req.file ? req.file.filename : null,
+    }
+    
+    Userphotos.create(upload_Data).then(function(result){
+        res.status(200).send(result);
+    }).catch(function(err){
+        res.status(500).send(err);
+    });
+
+})
+
+
+
+
+
 
 app.delete('/:email',function(req,res){
     let user = req.params.email;

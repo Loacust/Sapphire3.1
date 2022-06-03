@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-upload',
@@ -9,35 +11,63 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 export class UploadComponent implements OnInit {
   filePath: any;
   myForm: FormGroup;
+  data: any;
 
-  constructor(public fb: FormBuilder) { 
+  constructor(public fb: FormBuilder, private usersService: UsersService) {
+    this.data = this.usersService.current_user_email();
+
     this.myForm = this.fb.group({
-      img: [null],
-      filename: ['']
-  })
-}
+      email: [this.data, [Validators.required]],
+      image: ['']
+    })
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
 
-  imagePreview(e:any) {
-    const file = (e.target as HTMLInputElement).files![0];
+  imagePreview(e: any) {
+    const file1 = (e.target as HTMLInputElement).files![0];
 
     this.myForm.patchValue({
-      img: file
+      image: file1
     });
 
-    this.myForm.get('img')!.updateValueAndValidity()
+    this.myForm.get('image')!.updateValueAndValidity()
 
     const reader = new FileReader();
     reader.onload = () => {
       this.filePath = reader.result as string;
     }
-    reader.readAsDataURL(file)
+    reader.readAsDataURL(file1)
   }
 
-  submit() {
-    console.log(this.myForm.value)
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    this.myForm.patchValue({
+      image: file
+    });
   }
-  onFileChange(){}
+  upload() {
+    let formData = this.myForm.value;
+    let f = new FormData();
+
+
+    for (let k in formData) {
+      f.append(k, formData[k]);
+    }
+
+    console.log(this.myForm.value);
+
+    this.usersService.photo_upload(f).subscribe((result) => {
+      alert("Upload Successful")
+    }, (err) => {
+      alert("Upload Failed");
+      console.log(err)
+    });
+
+
+  }
+
 }
+
