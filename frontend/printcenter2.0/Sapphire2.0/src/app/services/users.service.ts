@@ -19,7 +19,14 @@ login(formData:object){
 }
 photo_upload(formData:any){
   return this.http.post('http://localhost:4000/imagePost', formData)
+
 }
+
+library_download(email:any){
+  return this.http.get('http://localhost:4000/imagePost/:email', email);
+}
+
+
 
 current_user_info(){
   return JSON.parse(localStorage.getItem('currentUser')!);
