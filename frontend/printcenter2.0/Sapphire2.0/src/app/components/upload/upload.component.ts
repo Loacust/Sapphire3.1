@@ -26,10 +26,10 @@ export class UploadComponent implements OnInit {
 
 
   imagePreview(e: any) {
-    const file1 = (e.target as HTMLInputElement).files![0];
+    const file = (e.target as HTMLInputElement).files![0];
 
     this.myForm.patchValue({
-      image: file1
+      image: file
     });
 
     this.myForm.get('image')!.updateValueAndValidity()
@@ -38,7 +38,7 @@ export class UploadComponent implements OnInit {
     reader.onload = () => {
       this.filePath = reader.result as string;
     }
-    reader.readAsDataURL(file1)
+    reader.readAsDataURL(file)
   }
 
 

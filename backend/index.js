@@ -124,6 +124,7 @@ app.post('/imagePost',multer({storage}).single('image'), function(req,res){
 
 
 
+
 app.delete('/:email',function(req,res){
     let user = req.params.email;
 
