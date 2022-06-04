@@ -21,8 +21,8 @@ ngOnInit()
 	
   Auto_download (){
     var list:any = [];
-    let emailData = this.data
-    this.usersService.library_download(emailData).subscribe((result)=>{
+    
+    this.usersService.library_download().subscribe((result)=>{
     list.push(result);
     console.log(list);
     return list

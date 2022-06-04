@@ -22,8 +22,8 @@ photo_upload(formData:any){
 
 }
 
-library_download(email:any){
-  return this.http.get('http://localhost:4000/imagePost/:email', email);
+library_download(){
+  return this.http.get('http://localhost:4000/imagePost/:email');
 }
 
 

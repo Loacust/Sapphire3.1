@@ -10,7 +10,6 @@ const Userphotos = require('./Models/photo_info');
 const path = require('path');
 
 
-
 app.use(cors());
 app.use('/images', express.static('uploadedimages'));
 
@@ -34,16 +33,12 @@ config.authenticate().then(function () {
 //Routes
 
 app.get('/imagePost/:email', function (req, res,) {
-    const email = req.params.email;
-    try {
-        const list = await db.Userphotos.findOne({
-            where: { email }
-        }
-    );
-    res.send(list);
-    } catch (err) {
-        res.send(err);
-    }
+    Userphotos.findAll().then(function(result){
+        res.send(result);
+
+    }).catch(function(err){
+        res.send(err)
+    });
 });
 
 
