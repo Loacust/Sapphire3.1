@@ -23,9 +23,11 @@ photo_upload(formData:any){
 }
 
 library_download(){
-  return this.http.get('http://localhost:4000/imagePost/:email');
+  return this.http.get('http://localhost:4000/imagePost');
 }
-
+photo_download(){
+  return this.http.get('http://localhost:4000/uploadimages/1654306572934-464610503.jpg');
+}
 
 
 current_user_info(){

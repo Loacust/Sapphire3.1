@@ -41,8 +41,9 @@ import { LibraryComponent } from './components/library/library.component';
     BrowserAnimationsModule,
     MatGridListModule,
     MatSliderModule,
-    HttpClientModule
+    HttpClientModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

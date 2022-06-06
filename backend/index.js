@@ -11,7 +11,9 @@ const path = require('path');
 
 
 app.use(cors());
-app.use('/images', express.static('uploadedimages'));
+app.use(express.static('backend'))
+app.use('/uploadimages', express.static('uploadedimages'));
+
 
 app.use(express.json());
 
@@ -32,7 +34,7 @@ config.authenticate().then(function () {
 
 //Routes
 
-app.get('/imagePost/:email', function (req, res,) {
+app.get('/imagePost', function (req, res,) {
     Userphotos.findAll().then(function(result){
         res.send(result);
 
