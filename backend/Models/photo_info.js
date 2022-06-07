@@ -6,12 +6,17 @@ const Userphotos =config.define('userphoto', {
     email: {
         type: Sequalize.STRING,
         allowNull: false,
-        primaryKey: true
+        
     },
     image: {
         type: Sequalize.STRING,
-        allowNull: true
+        allowNull: true,
+        primaryKey: true
     },
+  //  userid: {
+     //   type: Sequalize.INTEGER,
+    //    allowNull: false
+    //}
     
 },{timestamps:false});
 

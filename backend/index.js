@@ -8,6 +8,9 @@ const saltRounds = 7;
 const multer = require('multer');
 const Userphotos = require('./Models/photo_info');
 const path = require('path');
+const { fs } = require('fs');
+const { runInNewContext } = require('vm');
+
 
 
 app.use(cors());
@@ -23,17 +26,19 @@ config.authenticate().then(function () {
 }).catch(function (err) {
     console.log(err)
 });
-
-
-
-
-
-
-
-
+//initializing storage
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploadedimages');
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, uniqueSuffix + path.extname(file.originalname));
+    }
+});
 
 //Routes
-
+//Photo library get route
 app.get('/imagePost', function (req, res,) {
     Userphotos.findAll().then(function(result){
         res.send(result);
@@ -43,12 +48,7 @@ app.get('/imagePost', function (req, res,) {
     });
 });
 
-
-
-
-
-
-//Registration
+//Registration post
 app.post('/regPost', function (req, res) {
     let plainPassword = req.body.password;
 
@@ -101,16 +101,6 @@ app.post('/loginPost', function (req, res) {
     });
 });
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploadedimages');
-    },
-    filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, uniqueSuffix + path.extname(file.originalname));
-    }
-});
-
 //Image upload post
 app.post('/imagePost', multer({ storage }).single('image'), function (req, res) {
     let upload_Data = {
@@ -125,30 +115,53 @@ app.post('/imagePost', multer({ storage }).single('image'), function (req, res) 
     });
 
 })
+app.delete('/:image', function (req, res){
+    let image = req.params.image;
+    
+    
+    Userphotos.findByPk(image).then(function(result){
+        console.log(image)
+        if( result != null){
+            result.destroy().then(function(){
+                res.redirect('/')
+            }).catch(function(err){
+                res.send(err);
+            });
+        }
+        else{
+            res.send('image not found');
+        }
+    }).catch(function (err){
+        console.log('Fucking Failure');
+    })
+})
+app.get('/imagePost', function (req, res,) {
+    Userphotos.findAll(userid).then(function(result){
+        res.send(result);
 
-
-
-
-
-
-
-app.delete('/:email', function (req, res) {
-    let user = req.params.email;
-
-    User.findByPk(user).then(function (result) {
+    }).catch(function(err){
+        res.send(err)
+    });
+});
+/*
+app.delete('/imageDelete', function (req, res) {
+    let email = req.params.email;
+    let image = req.params.image;
+    Userphotos.findAll(email).then(function (result) {
 
         if (result) {
-            result.destroy().then(function () {
+            result.destroy(email.image).then(function () {
                 res.redirect('/');
             }).catch(function (err) {
                 res.send(err);
             })
         }
         else {
-            res.send('User not found')
+            res.send('Image not found')
         }
     })
-});
+})
+*/
 
 
 

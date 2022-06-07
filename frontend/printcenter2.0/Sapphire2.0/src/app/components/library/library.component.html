@@ -1,31 +1,52 @@
 <div class="container">
     <div class="row">
-        <div class="card" *ngFor="let pic of imageFile.slice(0,4); let i = index" class="col-sm-3">
-            <a href="#" class="btn btn-fix ">
-                <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{pic}}" alt="Card image cap"width="100%">
+        
+        <div class="card" *ngFor="let Remove of imageFile.slice(0,4); let i = index" class="col-sm-3" >
+            
+                <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{Remove}}" alt="Card image cap" width="100%" >
+                <button class="trashButton"  [value]="Remove" (click)="deleteImage($event)" type="button" title="Remove photo">
+                    {{"Remove"}}
+                    <img src="../../../assets/trash3-fill.svg" class="trashCan">
+                </button>
+                    
                 <div class="card-block ">
                 </div>
-            </a>
+          
+        </div>
+        
+    </div>
+    
+    <div class="row">
+        <div class="card" *ngFor="let Remove of imageFile.slice(4,8); let i = index" class="col-sm-3">
+            
+                <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{Remove}}" alt="" width="100%">
+                <button class="trashButton"  [value]="Remove" (click)="deleteImage($event)" type="button" title="Remove photo">
+                    {{"Remove"}}
+                    <img src="../../../assets/trash3-fill.svg" class="trashCan">
+                </button>
+                <div class="card-block ">
+                </div>
+           
         </div>
     </div>
     <div class="row">
-        <div class="card" *ngFor="let pic of imageFile.slice(4,8); let i = index" class="col-sm-3">
-            <a href="#" class="btn btn-fix ">
-                    <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{pic}}"alt="" width="100%">
-                    <div class="card-block ">
-                    </div>
-                </a>
-
-            </div>
-    </div>
-        <div class="row">
-                <div class="card" *ngFor="let pic of imageFile.slice(8,12); let i = index" class="col-sm-3">
-                    <a href="http://localhost:4000/uploadimages/{{pic}}" class="btn btn-fix ">
-                        <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{pic}}"
-                            alt="Card image cap" width="100%">
-                        <div class="card-block ">
-                        </div>
-                    </a>
+        <div class="card" *ngFor="let Remove of imageFile.slice(8,13); let i = index" class="col-sm-3">
+            
+           
+                <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{Remove}}" alt="Card image cap"
+                    width="100%">
+                    <button class="trashButton"  [value]="Remove" (click)="deleteImage($event)" type="button" title="Remove photo">
+                        {{"Remove"}}
+                        <img src="../../../assets/trash3-fill.svg" class="trashCan">
+                    </button>
+                <div class="card-block ">
                 </div>
+          
         </div>
     </div>
+</div>
+
+  
+        
+        
+          

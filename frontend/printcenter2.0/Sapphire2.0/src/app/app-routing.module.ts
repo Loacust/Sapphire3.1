@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { ApphomeComponent } from './components/apphome/apphome.component';
+import { LibraryComponent } from './components/library/library.component';
 import { PhotosComponent } from './components/photos/photos.component';
 import { PortalComponent } from './components/portal/portal.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -12,8 +13,8 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'portal', component: PortalComponent },
   { path: '', component: ApphomeComponent, canActivate: [AuthguardService] },
-  { path: 'photos', component: PhotosComponent, canActivate: [AuthguardService] }
-
+  { path: 'photos', component: PhotosComponent, canActivate: [AuthguardService] },
+  {path:  'library',component: LibraryComponent, canActivate: [AuthguardService]}
 ];
 
 @NgModule({

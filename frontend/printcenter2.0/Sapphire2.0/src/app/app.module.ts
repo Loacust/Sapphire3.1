@@ -6,8 +6,7 @@ import { AppComponent } from './app.component';
 import { ApphomeComponent } from './components/apphome/apphome.component';
 import { PortalComponent } from './components/portal/portal.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { MatSliderModule } from '@angular/material/slider';
@@ -16,6 +15,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PhotosComponent } from './components/photos/photos.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { LibraryComponent } from './components/library/library.component';
+
+
+
 
 
 
@@ -31,7 +33,8 @@ import { LibraryComponent } from './components/library/library.component';
     NavbarComponent,
      PhotosComponent,
      UploadComponent,
-     LibraryComponent
+     LibraryComponent,
+     
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { LibraryComponent } from './components/library/library.component';
     MatGridListModule,
     MatSliderModule,
     HttpClientModule,
+    FormsModule
   ],
 
   providers: [],

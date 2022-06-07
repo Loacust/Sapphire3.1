@@ -65,7 +65,7 @@ export class UploadComponent implements OnInit {
       alert("Upload Failed");
       console.log(err)
     });
-
+    location.reload();
 
   }
 
