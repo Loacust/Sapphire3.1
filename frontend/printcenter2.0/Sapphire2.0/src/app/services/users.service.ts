@@ -38,7 +38,6 @@ current_user_info(){
 current_user_email(){
 let currentUser = JSON.parse(localStorage.getItem('currentUser')!);
 let data: string = currentUser.email;
-console.log(data);
 return this.data = data;
 }
 

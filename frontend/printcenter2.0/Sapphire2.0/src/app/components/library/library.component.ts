@@ -44,16 +44,18 @@ constructor(private usersService: UsersService, private router:Router) {
     console.log(this.imageFile)
   };
 
-  deleteImage($event: any){
-    const fileName = $event.target.value;
-    console.log(fileName, this.data);
+  deleteImage(fileName: any){
+    //const fileName = $event.target.value;
+    console.log(fileName);
     this.usersService.deleteService(fileName);
-    this.router.navigate(['library']);
+    window.location.reload();
     
 
   }
 
-
+  passIndexValue(i: number){
+    console.log(i);//clicked index
+ }
     }
 
  

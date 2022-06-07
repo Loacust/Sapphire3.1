@@ -57,7 +57,7 @@ export class UploadComponent implements OnInit {
       f.append(k, formData[k]);
     }
 
-    console.log(this.myForm.value);
+    
 
     this.usersService.photo_upload(f).subscribe((result) => {
       alert("Upload Successful")
