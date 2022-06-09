@@ -9,13 +9,14 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./upload.component.scss']
 })
 export class UploadComponent implements OnInit {
-  filePath: any;
-  myForm: FormGroup;
-  data: any;
+  filePath: any; //image preview
+  myForm: FormGroup; // my form
+  data: any; // holds current user email
 
   constructor(public fb: FormBuilder, private usersService: UsersService) {
     this.data = this.usersService.current_user_email();
 
+    //FORM FOR IMAGE UPLOAD
     this.myForm = this.fb.group({
       email: [this.data, [Validators.required]],
       image: ['']
@@ -24,7 +25,7 @@ export class UploadComponent implements OnInit {
 
   ngOnInit(): void { }
 
-
+// IMAGE PREVIEW
   imagePreview(e: any) {
     const file = (e.target as HTMLInputElement).files![0];
 
@@ -51,14 +52,9 @@ export class UploadComponent implements OnInit {
   upload() {
     let formData = this.myForm.value;
     let f = new FormData();
-
-
     for (let k in formData) {
       f.append(k, formData[k]);
     }
-
-    
-
     this.usersService.photo_upload(f).subscribe((result) => {
       alert("Upload Successful")
     }, (err) => {

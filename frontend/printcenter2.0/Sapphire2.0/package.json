@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "base-64": "^1.0.0",
     "bootstrap-icons": "^1.8.3",
     "cropperjs": "^1.5.12",
     "multer": "^1.4.5-lts.1",

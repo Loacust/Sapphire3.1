@@ -106,7 +106,7 @@ app.post('/loginPost', function (req, res) {
     });
 });
 
-//Image upload post
+//Add Image to library upload post
 app.post('/imagePost', multer({ storage }).single('image'), function (req, res) {
     let upload_Data = {
         email: req.body.email,
@@ -120,6 +120,9 @@ app.post('/imagePost', multer({ storage }).single('image'), function (req, res) 
     });
 
 })
+
+
+//Delete Image from database *not server
 app.delete('/:image', function (req, res){
     let image = req.params.image;
     
@@ -137,36 +140,17 @@ app.delete('/:image', function (req, res){
             res.send('image not found');
         }
     }).catch(function (err){
-        console.log('Fucking Failure');
+        console.log('you failed');
     })
 })
 app.get('/imagePost', function (req, res,) {
-    Userphotos.findAll(userid).then(function(result){
+    Userphotos.findAll().then(function(result){
         res.send(result);
 
     }).catch(function(err){
         res.send(err)
     });
 });
-/*
-app.delete('/imageDelete', function (req, res) {
-    let email = req.params.email;
-    let image = req.params.image;
-    Userphotos.findAll(email).then(function (result) {
-
-        if (result) {
-            result.destroy(email.image).then(function () {
-                res.redirect('/');
-            }).catch(function (err) {
-                res.send(err);
-            })
-        }
-        else {
-            res.send('Image not found')
-        }
-    })
-})
-*/
 
 
 

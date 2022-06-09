@@ -5,7 +5,9 @@
         <img #image [src]="imageSource" crossorigin class="preview1">
       </div>
       <div class="col-sm-6">
-         <p> Preview: </p>
-        <img [src]="imageDestination" class="preview" >
+         
+        <img [src]="imageDestination" class="preview" ><br>
+        <button type="file"  (click)="saveCroppedImage()" class="btn btn-primary">Save</button>
       </div>
     </div>
+  

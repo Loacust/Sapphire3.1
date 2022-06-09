@@ -13,32 +13,32 @@ import { EventEmitter } from '@angular/core';
 })
 export class LibraryComponent implements OnInit {
 
-  
-  
+
+
   data: string = this.usersService.current_user_email(); //retrieves and stores current user email
   imageFile: any = []; //AUTODOWNLOAD
-  message!:string; //DATASHARE
+  message!: string; //DATASHARE
 
   @Output() messageEvent = new EventEmitter<string>();
-  
-constructor(private usersService: UsersService, private router:Router,private image:EditortransferService) { 
-    
-   
+
+  constructor(private usersService: UsersService, private router: Router, private image: EditortransferService) {
+
+
   }
-//DATASHARE
-//broadcast image filename to editor and edit-page and then navigate ti edit-page 
-sendMessage(image:string){
-this.image.changeMessage(image);
-console.log(image);
-this.router.navigate(['edit-page']);
+  //DATASHARE
+  //broadcast image filename to editor and edit-page and then navigate ti edit-page 
+  sendMessage(image: string) {
+    this.image.changeMessage(image);
+    this.router.navigate(['edit-page']);
 
 
- }
+  }
 
 
 
   ngOnInit() {
-  this.image.currentMessage.subscribe(message => this.message = message);
+
+    this.image.currentMessage.subscribe(message => this.message = message);
 
 
     //AUTODOWNLOAD
@@ -54,28 +54,23 @@ this.router.navigate(['edit-page']);
         }
       }
     })
-    this.imageFile = imageList;   
+    this.imageFile = imageList;
     console.log(this.imageFile)
-    
+
   };
   //DELETE 
   //removes images from current users online library
-  deleteImage(fileName: any){
+  deleteImage(fileName: any) {
     console.log(fileName);
     this.usersService.deleteService(fileName);
     window.location.reload();
-    
+
 
   }
-
-    
-  
-    
-//  }
-  passIndexValue(i: number){
+  passIndexValue(i: number) {
     console.log(i)//clicked index
- }
- 
-    }
+  }
 
- 
+}
+
+
