@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-sm bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="">Sapphire</a>
+      <button class="navbar-brand" (click)="homePage()">Sapphire</button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <img src="../../../assets/hamburger_menu_navbar_options_icon_196495.png" height="30px">
       </button>
@@ -18,7 +18,7 @@
           </li>
           
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Online Orders</a>
+            <a class="nav-link" routerLink='orders-page'>Online Orders</a>
           </li>
         </ul>
       </div>

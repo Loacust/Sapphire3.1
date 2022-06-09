@@ -31,8 +31,10 @@ export class PortalComponent implements OnInit {
     this.usersService.login(signIn).subscribe((result) =>{
       this.router.navigate(['']);
       localStorage.setItem('currentUser',JSON.stringify(result)); 
-    });
+    },(err)=>{
+      this.router.navigate(['registration'])})
+    };
    }
 
-}
+
 

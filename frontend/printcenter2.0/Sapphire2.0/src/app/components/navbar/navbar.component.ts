@@ -11,5 +11,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  homePage() {
+    
+    window.open("http://127.0.0.1:8080/Index.html","_blank");
+  }
 }
