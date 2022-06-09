@@ -38,8 +38,13 @@ const storage = multer.diskStorage({
 });
 
 //Routes
+
+app.get('/editorImage', function(req,res){
+   editorImage = req.params.editorImage;
+    Userphotos.findByPk(editorImage)
+} )
 //Photo library get route
-app.get('/imagePost', function (req, res,) {
+app.get('/imagePost', function (req, res) {
     Userphotos.findAll().then(function(result){
         res.send(result);
 

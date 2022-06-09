@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit, Output } from '@angular/core';
+import { EditortransferService } from 'src/app/services/editortransfer.service';
 import { UsersService } from 'src/app/services/users.service';
 import { RouterModule, Routes, Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
 
 
 
@@ -11,24 +12,37 @@ import { RouterModule, Routes, Router } from '@angular/router';
   styleUrls: ['library.component.scss']
 })
 export class LibraryComponent implements OnInit {
-  
-  
-  data: string = this.usersService.current_user_email();
-  imageFile: any = [];
-
 
   
-constructor(private usersService: UsersService, private router:Router) { 
+  
+  data: string = this.usersService.current_user_email(); //retrieves and stores current user email
+  imageFile: any = []; //AUTODOWNLOAD
+  message!:string; //DATASHARE
+
+  @Output() messageEvent = new EventEmitter<string>();
+  
+constructor(private usersService: UsersService, private router:Router,private image:EditortransferService) { 
     
    
   }
- 
+//DATASHARE
+//broadcast image filename to editor and edit-page and then navigate ti edit-page 
+sendMessage(image:string){
+this.image.changeMessage(image);
+console.log(image);
+this.router.navigate(['edit-page']);
 
 
+ }
 
 
 
   ngOnInit() {
+  this.image.currentMessage.subscribe(message => this.message = message);
+
+
+    //AUTODOWNLOAD
+    // automatically download and display the users online library 
     let imageList: any = [];
     let list: any = [];
     this.usersService.library_download().subscribe((result) => {
@@ -42,10 +56,11 @@ constructor(private usersService: UsersService, private router:Router) {
     })
     this.imageFile = imageList;   
     console.log(this.imageFile)
+    
   };
-
+  //DELETE 
+  //removes images from current users online library
   deleteImage(fileName: any){
-    //const fileName = $event.target.value;
     console.log(fileName);
     this.usersService.deleteService(fileName);
     window.location.reload();
@@ -53,9 +68,14 @@ constructor(private usersService: UsersService, private router:Router) {
 
   }
 
+    
+  
+    
+//  }
   passIndexValue(i: number){
-    console.log(i);//clicked index
+    console.log(i)//clicked index
  }
+ 
     }
 
  

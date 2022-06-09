@@ -15,6 +15,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PhotosComponent } from './components/photos/photos.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { LibraryComponent } from './components/library/library.component';
+import { EditorComponent } from './components/editor/editor.component';
+import { EditPageComponent } from './components/edit-page/edit-page.component';
 
 
 
@@ -29,11 +31,12 @@ import { LibraryComponent } from './components/library/library.component';
     ApphomeComponent,
     PortalComponent,
     RegistrationComponent,
-
-    NavbarComponent,
+  NavbarComponent,
      PhotosComponent,
      UploadComponent,
      LibraryComponent,
+     EditorComponent,
+     EditPageComponent,
      
   ],
   imports: [
@@ -48,7 +51,7 @@ import { LibraryComponent } from './components/library/library.component';
     FormsModule
   ],
 
-  providers: [],
+  providers: [LibraryComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
