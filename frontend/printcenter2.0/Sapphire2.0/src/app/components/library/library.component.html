@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
 
-        <div class="card" *ngFor="let Remove of imageFile.slice(0,4); let i=index" class="col-sm-3">
+        <div class="card" *ngFor="let Remove of imageFile.slice(); let i=index" class="col-sm-3">
 
             <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{Remove}}" alt="Card image cap"
                 width="100%">
@@ -25,7 +25,7 @@
 
     </div>
 
-
+<!--
 
     <div class="row">
         <div class="card" *ngFor="let Remove of imageFile.slice(4,8); let i = index" class="col-sm-3">
@@ -70,3 +70,4 @@
 
         </div>
     </div>
+-->

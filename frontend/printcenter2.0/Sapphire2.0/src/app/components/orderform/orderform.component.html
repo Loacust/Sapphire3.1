@@ -1,1 +1,42 @@
-<p>orderform works!</p>
+<div class="container">
+<div class="row">
+<div class="col-6" *ngFor="let Remove of imageFile.slice(); let i = index">
+    <div class="row">
+    <div class="col-6">
+        <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{Remove}}" alt="" width="100%">
+    </div>
+<!--<div class="col-6">
+        <div class="container">
+            <div class="row">
+              <div class="col-sm-6 offset-sm-3">
+                  <form>
+                    <form [formGroup]="Orders" >
+                        <div class="mb-3">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-control" formControlName="firstname">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-control" formControlName="lastname">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-control" formControlName="email">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control" formControlName="password">
+                        </div>
+                     
+                        <button type="submit" class="submit" [disabled]="Orders.invalid" (click)="Order()">Submit</button>
+                    </form>
+                  </form>
+                
+              </div>
+            </div>
+          </div>
+    </div>
+    </div>
+</div>
+</div>
+</div> -->

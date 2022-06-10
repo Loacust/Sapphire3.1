@@ -17,7 +17,6 @@ import { UploadComponent } from './components/upload/upload.component';
 import { LibraryComponent } from './components/library/library.component';
 import { EditorComponent } from './components/editor/editor.component';
 import { EditPageComponent } from './components/edit-page/edit-page.component';
-import { OrdersPageComponent } from './components/orders-page/orders-page.component';
 import { OrderformComponent } from './components/orderform/orderform.component';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -40,7 +39,6 @@ import { FooterComponent } from './components/footer/footer.component';
      LibraryComponent,
      EditorComponent,
      EditPageComponent,
-     OrdersPageComponent,
      OrderformComponent,
      FooterComponent,
      
