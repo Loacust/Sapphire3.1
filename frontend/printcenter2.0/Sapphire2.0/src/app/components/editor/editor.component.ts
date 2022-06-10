@@ -62,12 +62,12 @@ export class EditorComponent implements OnInit {
     })
   }
   saveCroppedImage(){
-    var split = this.imageDestination //.split(',');
-    var croppedImage = split //[1];
+    var split = this.imageDestination//.split(',');
+    var croppedImage = split//[1];
     var blob = new Blob([croppedImage],{type: 'image/jpeg'});
     var file = new File([blob],'cropped.jpeg');
     this.newCroppedImage = file;
-    console.log(file)
+    console.log(croppedImage)
     this.onFileChange();
     
   }

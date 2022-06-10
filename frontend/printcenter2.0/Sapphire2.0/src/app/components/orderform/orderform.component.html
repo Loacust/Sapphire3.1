@@ -1,42 +1,37 @@
 <div class="container">
-<div class="row">
-<div class="col-6" *ngFor="let Remove of imageFile.slice(); let i = index">
     <div class="row">
-    <div class="col-6">
-        <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{Remove}}" alt="" width="100%">
-    </div>
-<!--<div class="col-6">
-        <div class="container">
+        <div class="col-6" *ngFor="let picture of imageFile.slice(); let i = index">
             <div class="row">
-              <div class="col-sm-6 offset-sm-3">
-                  <form>
-                    <form [formGroup]="Orders" >
-                        <div class="mb-3">
-                            <label class="form-label">First Name</label>
-                            <input type="text" class="form-control" formControlName="firstname">
+                <div class="col-6">
+                    {{'Image '+ (i+1)}}
+                    <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{picture}}" alt=""
+                        width="100%">
+                </div>
+               <div class="col-6">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-6 offset-sm-3">
+                                <form [formGroup]="orders">
+                                    <select class="custom-select" formControlName="sizes">
+                                        <option value="">Choose Size</option>
+                                        <option *ngFor="let size of sizes">
+                                            {{size}}
+                                        </option>
+                                    </select>
+                                    <select class="custom-select" formControlName="quantity">
+                                    <option value="">Quantity</option>
+                                    <option *ngFor="let number of quantity">
+                                        {{number}}
+                                    </option>
+                                </select>
+                                <button type="submit" (click)="orderNow()">Order Now</button>
+                                </form>
+
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Last Name</label>
-                            <input type="text" class="form-control" formControlName="lastname">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Email Address</label>
-                            <input type="email" class="form-control" formControlName="email">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-control" formControlName="password">
-                        </div>
-                     
-                        <button type="submit" class="submit" [disabled]="Orders.invalid" (click)="Order()">Submit</button>
-                    </form>
-                  </form>
-                
-              </div>
+                    </div>
+                </div>
             </div>
-          </div>
-    </div>
+        </div>
     </div>
 </div>
-</div>
-</div> -->
