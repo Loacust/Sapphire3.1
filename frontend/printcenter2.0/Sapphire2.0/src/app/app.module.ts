@@ -52,7 +52,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MatGridListModule,
     MatSliderModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    
   ],
 
   providers: [LibraryComponent],
