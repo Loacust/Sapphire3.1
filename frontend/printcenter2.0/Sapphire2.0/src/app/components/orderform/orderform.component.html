@@ -1,17 +1,17 @@
 <div class="container">
     <div class="row">
-        <div class="col-6" *ngFor="let picture of imageFile.slice(); let i = index">
+        <div class="col-sm-6" *ngFor="let picture of imageFile.slice(); let i = index">
             <div class="row">
-                <div class="col-6">
+                <div class="col-sm-6">
                     {{'Image '+ (i+1)}}
-                    <img class="card-img-top " data-src="http://localhost:4000/uploadimages/{{picture}}" alt=""
+                    <img data-src="http://localhost:4000/uploadimages/{{picture}}" alt=""
                         width="100%">
                 </div>
-               <div class="col-6">
+               <div class="col-sm-6">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-6 offset-sm-3">
-                                <form [formGroup]="orders">
+                            <div class="col-sm-6">
+                                <form [formGroup]="orders" class="orderForm">
                                     <select class="custom-select" formControlName="sizes">
                                         <option value="">Choose Size</option>
                                         <option *ngFor="let size of sizes">
@@ -24,9 +24,9 @@
                                         {{number}}
                                     </option>
                                 </select>
-                                <button type="submit" (click)="orderNow()">Order Now</button>
+                                <button type="submit" (click)="orderNow()">Add to Cart</button>
                                 </form>
-
+                                
                             </div>
                         </div>
                     </div>
