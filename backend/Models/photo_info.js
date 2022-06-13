@@ -13,11 +13,7 @@ const Userphotos =config.define('userphoto', {
         allowNull: true,
         primaryKey: true
     },
-  //  userid: {
-     //   type: Sequalize.INTEGER,
-    //    allowNull: false
-    //}
-    
+
 },{timestamps:false});
 
 module.exports = Userphotos ;

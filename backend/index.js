@@ -10,7 +10,8 @@ const Userphotos = require('./Models/photo_info');
 const path = require('path');
 const { fs } = require('fs');
 const stripe = require('stripe')('sk_test_51L9uu6ARDzLUzTUFuFM7G0k5WnNRiCExPjo6G7a7L2xdPKpwqeNpOHzOgE2ksN8ZiScgOwiTnljF4JU3lwrXaiqb005hCIv9hk')
-const bodyparser = require('body-parser')
+const bodyparser = require('body-parser');
+const UserOrders = require('./Models/orders');
 
 app.use(bodyparser.urlencoded({entended:false}));
 app.use(cors());
@@ -151,6 +152,21 @@ app.get('/imagePost', function (req, res,) {
         res.send(err)
     });
 });
+//OrderPost
+app.post('/orderInfo', function (req, res) {
+    let upload_Data = {
+        email: req.body.email,
+        photoid: req.body.photoid,
+        quantity: req.body.quantity,
+        size: req.body.size
+    }
+    UserOrders.create(upload_Data).then(function (result) {
+        res.status(200).send(result);
+    }).catch(function (err) {
+        res.status(500).send(err);
+    });
+
+})
 //Checkout Post
 app.post('/checkout', async(req, res) => {
     try {

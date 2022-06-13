@@ -22,11 +22,12 @@ photo_upload(formData:any){
   return this.http.post('http://localhost:4000/imagePost', formData)
 
 }
-
 library_download(){
   return this.http.get('http://localhost:4000/imagePost');
 }
-
+orders_upload(formData:any){
+  return this.http.post('http://localhost:4000/orderInfo',formData);
+}
 
 
 current_user_info(){

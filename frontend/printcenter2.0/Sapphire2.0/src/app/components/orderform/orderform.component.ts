@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { Validators } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-orderform',
   templateUrl: './orderform.component.html',
@@ -11,17 +12,19 @@ import { Validators } from '@angular/forms';
 })
 export class OrderformComponent implements OnInit {
   data: string = this.usersService.current_user_email(); //retrieves and stores current user email
+  
   imageFile: any = []; //AUTODOWNLOAD
   orders:any;
-  sizes: any = ['4x4','4x6','5x7','8x8','Wallet','8x10'];
-  quantity: any = ['1','2','3','4','5','6','7','8','9','10'];
+  size: any = ['4x4','4x6','5x7','8x8','Wallet','8x10'];
+  quantity = [1,2,3,4,5,6,7,8,9,10];
 
   
   constructor(private usersService:UsersService,public formBuilder:FormBuilder) { 
     this.orders= formBuilder.group({
-      sizes: ['',[Validators.required]],
-      quantity: ['',[Validators.required]]
-      
+      size: ['',[Validators.required]],
+      quantity: [,[Validators.required]],
+      email: [this.data,[Validators.required]],
+      photoid:['',[Validators.required]]
     })
   }
 
@@ -40,9 +43,21 @@ export class OrderformComponent implements OnInit {
     this.imageFile = imageList;
     console.log(this.imageFile)
   }
-orderNow(){
+addToCart(image:any){
+  let formData = this.orders.value;
+  this.orders.patchValue({
+    photoid: image
+  });
+  console.log(this.orders.value);
+  this.usersService.orders_upload(formData).subscribe((result) => {
+    alert("Upload Successful")
+  }, (err) => {
+    alert("Upload Failed");
+    console.log(err)
+  //location.reload();
+
   
 
-}
+})
 
-}
+}}
