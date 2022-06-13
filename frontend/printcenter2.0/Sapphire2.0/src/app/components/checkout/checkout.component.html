@@ -1,0 +1,10 @@
+<h2>Angular Stripe Checkout Example</h2>
+ 
+<button (click)="makepayment(15)">Pay With Stripe</button>
+ 
+<div *ngIf="success">
+  <h1>Your Payment is complete successfully</h1>
+</div>
+<div *ngIf="failure">
+    <h1>Some Error is taken place inside the payment</h1>
+</div>

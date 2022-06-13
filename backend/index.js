@@ -9,14 +9,14 @@ const multer = require('multer');
 const Userphotos = require('./Models/photo_info');
 const path = require('path');
 const { fs } = require('fs');
-const { runInNewContext } = require('vm');
+const stripe = require('stripe')('sk_test_51L9uu6ARDzLUzTUFuFM7G0k5WnNRiCExPjo6G7a7L2xdPKpwqeNpOHzOgE2ksN8ZiScgOwiTnljF4JU3lwrXaiqb005hCIv9hk')
+const bodyparser = require('body-parser')
 
-
-
+app.use(bodyparser.urlencoded({entended:false}));
 app.use(cors());
 app.use(express.static('backend'))
 app.use('/uploadimages', express.static('uploadedimages'));
-
+app.use(bodyparser.json());
 
 app.use(express.json());
 
@@ -151,7 +151,40 @@ app.get('/imagePost', function (req, res,) {
         res.send(err)
     });
 });
-
+//Checkout Post
+app.post('/checkout', async(req, res) => {
+    try {
+        console.log(req.body);
+        token = req.body.token
+      const customer = stripe.customers
+        .create({
+          email: "janson92@gmail.com",
+          source: token.id
+        })
+        .then((customer) => {
+          console.log(customer);
+          return stripe.charges.create({
+            amount: 1000,
+            description: "4x6 Photo",
+            currency: "USD",
+            customer: customer.id,
+          });
+        })
+        .then((charge) => {
+          console.log(charge);
+            res.json({
+              data:"success"
+          })
+        })
+        .catch((err) => {
+            res.json({
+              data: "failure",
+            });
+        });
+      return true;
+    } catch (error) {
+      return false;
+    }})
 
 
 app.listen(4000, function () {

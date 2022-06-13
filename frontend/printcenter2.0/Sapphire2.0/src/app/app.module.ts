@@ -8,7 +8,7 @@ import { PortalComponent } from './components/portal/portal.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSliderModule } from '@angular/material/slider';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -19,6 +19,7 @@ import { EditorComponent } from './components/editor/editor.component';
 import { EditPageComponent } from './components/edit-page/edit-page.component';
 import { OrderformComponent } from './components/orderform/orderform.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 
@@ -41,6 +42,7 @@ import { FooterComponent } from './components/footer/footer.component';
      EditPageComponent,
      OrderformComponent,
      FooterComponent,
+     CheckoutComponent,
      
   ],
   imports: [
