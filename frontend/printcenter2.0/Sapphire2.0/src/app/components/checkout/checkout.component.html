@@ -1,10 +1,41 @@
+<div class="heading cf">
+  <h1>My Cart</h1>
+  <div class="container">
+    <div class="card" *ngFor="let item of fullOrder">
+      <div class="row">
+      <div class="col-sm-5">
+      <img class="card-img-top" data-src="http://localhost:4000/uploadimages/{{item.photoid}}" alt="Card image cap"
+        width="50%">
+      
+    </div>
+    <div class="col-sm-7">
+      <div class="col-sm-12">
+        <p>Quantity : {{item.quantity}}</p>
+        <p>Size: {{item.size}}</p>
+        <p>Price: ${{item.price}}</p>
+    </div>
+    </div>
+  </div>
+</div>
 
- 
-<button (click)="makepayment(15)">Pay Now</button>
- 
+
+
+<div class="subtotal cf">
+  <ul>
+    <li class="totalRow"><span class="label">Subtotal</span><span class="value">${{this.total}}</span></li>
+
+
+    <li class="totalRow"><span class="label">Tax</span><span class="value"></span></li>
+    <li class="totalRow final"><span class="label">Total</span><span class="value"></span></li>
+    <li class="totalRow"><button (click)="makepayment(15)">CheckOut</button></li>
+  </ul>
+</div>
+</div>
+
+
 <div *ngIf="success">
   <h1>Your Payment is complete successfully</h1>
 </div>
 <div *ngIf="failure">
-    <h1>Some Error is taken place inside the payment</h1>
+  <h1>Some Error is taken place inside the payment</h1>
 </div>

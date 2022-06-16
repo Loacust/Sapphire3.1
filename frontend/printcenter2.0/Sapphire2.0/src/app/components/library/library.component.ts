@@ -26,7 +26,7 @@ export class LibraryComponent implements OnInit {
 
   }
   //DATASHARE
-  //broadcast image filename to editor and edit-page and then navigate ti edit-page 
+  //broadcast image filename to editor and edit-page and then navigate to edit-page 
   sendMessage(image: string) {
     this.image.changeMessage(image);
     this.router.navigate(['edit-page']);
@@ -55,7 +55,7 @@ export class LibraryComponent implements OnInit {
       }
     })
     this.imageFile = imageList;
-    console.log(this.imageFile)
+    
 
   };
   //DELETE 

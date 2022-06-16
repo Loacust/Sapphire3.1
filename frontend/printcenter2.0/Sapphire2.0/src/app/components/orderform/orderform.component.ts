@@ -12,19 +12,19 @@ import { Validators } from '@angular/forms';
 })
 export class OrderformComponent implements OnInit {
   data: string = this.usersService.current_user_email(); //retrieves and stores current user email
-  
   imageFile: any = []; //AUTODOWNLOAD
   orders:any;
   size: any = ['4x4','4x6','5x7','8x8','Wallet','8x10'];
-  quantity = [1,2,3,4,5,6,7,8,9,10];
-
+  quantity: number[] = [1,2,3,4,5,6,7,8,9,10];
+  price!: string;
   
   constructor(private usersService:UsersService,public formBuilder:FormBuilder) { 
     this.orders= formBuilder.group({
       size: ['',[Validators.required]],
       quantity: [,[Validators.required]],
       email: [this.data,[Validators.required]],
-      photoid:['',[Validators.required]]
+      photoid:['',[Validators.required]],
+      price:[,[Validators.required]]
     })
   }
 
@@ -41,23 +41,63 @@ export class OrderformComponent implements OnInit {
       }
     })
     this.imageFile = imageList;
-    console.log(this.imageFile)
   }
-addToCart(image:any){
-  let formData = this.orders.value;
+
+/*priceChange(event:any){
+  let currentSelectedSize =this.orders.size;
+  console.log(currentSelectedSize);
+
+}*/
+addToCart(image: string){
+  let price = this.priceMethod(this.orders.value.quantity, this.orders.value.size);
   this.orders.patchValue({
     photoid: image
   });
-  console.log(this.orders.value);
-  this.usersService.orders_upload(formData).subscribe((result) => {
-    alert("Upload Successful")
-  }, (err) => {
-    alert("Upload Failed");
-    console.log(err)
-  //location.reload();
+  this.orders.patchValue({
+    price: price
+  });
+  let formData = this.orders.value;
+  this.usersService.orders_upload(formData).subscribe(function () {
+    alert("Upload Successful");
+  })
+ location.reload();
+  
+}
+priceMethod(quantity: number, size: string){
+    if (size === "4x4"){
+      let total = (quantity*0.500).toFixed(2);
+      
+      return total
+    }
+    if (size === "4x6"){
+      let total = (quantity*0.55).toFixed(2)
+
+      return total
+    }
+    if (size === "5x7"){
+      let total = (quantity*0.60).toFixed(2)
+
+      return total
+    }
+    if (size === "8x8"){
+      let total = (quantity*0.75).toFixed(2)
+
+      return total
+    }
+    if (size === "8x10"){
+      let total = (quantity*1.00).toFixed(2)
+
+      return total
+    }
+    if (size === "Wallet"){
+      let total = (quantity*0.25).toFixed(2)
+
+      return total
+    }
+    else return 0
 
   
+}
 
-})
 
-}}
+}

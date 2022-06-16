@@ -8,7 +8,6 @@ const UserOrders=config.define('userorder', {
         type: Sequalize.STRING,
         allowNull: false,
         primaryKey: true
-        
     },
     photoid: {
         type: Sequalize.STRING,
@@ -22,6 +21,11 @@ const UserOrders=config.define('userorder', {
     size:{
         type: Sequalize.STRING,
         allowNull: false
+    },
+    price:{
+        type: Sequalize.NUMBER,
+        allowNull: false,  
+
     }
 
 },{timestamps:false});

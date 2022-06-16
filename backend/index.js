@@ -158,7 +158,8 @@ app.post('/orderInfo', function (req, res) {
         email: req.body.email,
         photoid: req.body.photoid,
         quantity: req.body.quantity,
-        size: req.body.size
+        size: req.body.size,
+        price: req.body.price
     }
     UserOrders.create(upload_Data).then(function (result) {
         res.status(200).send(result);
@@ -167,6 +168,16 @@ app.post('/orderInfo', function (req, res) {
     });
 
 })
+//Order Retieval
+app.get('/orderRetrieval', function (req, res,) {
+    UserOrders.findAll().then(function(result){
+        res.send(result);
+
+    }).catch(function(err){
+        res.send(err)
+    });
+});
+
 //Checkout Post
 app.post('/checkout', async(req, res) => {
     try {
@@ -201,6 +212,15 @@ app.post('/checkout', async(req, res) => {
     } catch (error) {
       return false;
     }})
+
+    app.get('/priceRetrieval', function (req, res,) {
+        UserOrders.findAll().then(function(result){
+            res.send(result);
+    
+        }).catch(function(err){
+            res.send(err)
+        });
+    });
 
 
 app.listen(4000, function () {
