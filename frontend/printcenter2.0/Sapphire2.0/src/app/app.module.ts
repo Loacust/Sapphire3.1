@@ -8,7 +8,7 @@ import { PortalComponent } from './components/portal/portal.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { QRCodeModule } from 'angular2-qrcode';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PhotosComponent } from './components/photos/photos.component';
@@ -20,6 +20,7 @@ import { OrderformComponent } from './components/orderform/orderform.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SalesComponent } from './components/sales/sales.component';
+import { ThankyouComponent } from './components/thankyou/thankyou.component';
 
 
 
@@ -46,6 +47,8 @@ import { SalesComponent } from './components/sales/sales.component';
      FooterComponent,
      CheckoutComponent,
      SalesComponent,
+     ThankyouComponent,
+   
 
      
   ],
@@ -55,7 +58,7 @@ import { SalesComponent } from './components/sales/sales.component';
     TooltipModule.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    
+    QRCodeModule,
     HttpClientModule,
     FormsModule,
 

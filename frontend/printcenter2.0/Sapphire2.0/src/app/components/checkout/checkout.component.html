@@ -25,9 +25,9 @@
     <li class="totalRow"><span class="label">Subtotal</span><span class="value">${{this.total}}</span></li>
 
 
-    <li class="totalRow"><span class="label">Tax</span><span class="value"></span></li>
-    <li class="totalRow final"><span class="label">Total</span><span class="value"></span></li>
-    <li class="totalRow"><button (click)="makepayment(15)">CheckOut</button></li>
+    <li class="totalRow"><span class="label">Tax</span><span class="value">${{this.taxTotal}}</span></li>
+    <li class="totalRow final"><span class="label">Total</span><span class="value">{{this.finalTotal}}</span></li>
+    <li class="totalRow"><button (click)="makepayment()">CheckOut</button></li>
   </ul>
 </div>
 </div>

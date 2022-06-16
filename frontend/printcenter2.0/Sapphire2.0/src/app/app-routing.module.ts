@@ -10,7 +10,9 @@ import { PhotosComponent } from './components/photos/photos.component';
 import { PortalComponent } from './components/portal/portal.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { SalesComponent } from './components/sales/sales.component';
+import { ThankyouComponent } from './components/thankyou/thankyou.component';
 import { AuthguardService } from './services/authguard.service';
+
 
 
 const routes: Routes = [
@@ -23,8 +25,8 @@ const routes: Routes = [
   { path: 'edit-page', component: EditPageComponent, canActivate: [AuthguardService] },
   { path: 'orderform', component: OrderformComponent, canActivate: [AuthguardService]},
   { path: 'checkout', component: CheckoutComponent},
-  { path: 'sales', component: SalesComponent }
- 
+  { path: 'sales', component: SalesComponent },
+  { path: 'thankyou', component: ThankyouComponent}
 ];
 
 @NgModule({

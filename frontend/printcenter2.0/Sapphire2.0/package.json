@@ -20,6 +20,7 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "angular2-qrcode": "^2.0.3",
     "base-64": "^1.0.0",
     "blob-util": "^2.0.2",
     "bootstrap-icons": "^1.8.3",

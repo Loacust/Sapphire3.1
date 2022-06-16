@@ -1,5 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { CheckoutService } from 'src/app/services/checkout.service';
 
 
@@ -24,8 +26,14 @@ export class CheckoutComponent implements OnInit {
   totalPrice!: string;
   priceList: any =[];
   total: any;
+  intTotal!: number;
+  taxTotal: any;
+  intTaxTotal!:number;
+  finalTotal: any;
+  intFinalNumber!: number;
 
-  constructor(private checkout: CheckoutService) { }
+
+  constructor(private checkout: CheckoutService, private router: Router) { }
 
   ngOnInit(): void {
     //Stripe
@@ -36,12 +44,14 @@ export class CheckoutComponent implements OnInit {
   
     //Price total retrieval
     this.priceTotal();
+
+    
      }
 
 
 ///STRIPE
 
-  makepayment(amount: number) {
+  makepayment() {
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51L9uu6ARDzLUzTUFCG2Bc4f3TR61BYSLdfJo772Wp3uKg5Jk5gb1N1otmcOi2x4Rg8ztGdGSLyM7fMfqqKg9BABP00ygjWD9Qk',
       locale: 'auto',
@@ -55,6 +65,7 @@ export class CheckoutComponent implements OnInit {
         console.log(data);
         if (data.data === "success") {
           this.success = true
+          this.router.navigate(['thankyou']);
         }
         else {
           this.failure = true
@@ -64,8 +75,8 @@ export class CheckoutComponent implements OnInit {
 
     paymentHandler.open({
       name: 'Sapphire Digital',
-      description: "4x6 Photo",
-      amount: amount * 100,
+      description: "Prints Order",
+      amount: this.intFinalNumber*100,
     });
 
   }
@@ -121,18 +132,31 @@ export class CheckoutComponent implements OnInit {
       this.priceList[i] = singleOrder[i].price
        }
       var x = 0
-      let total = 0
+      let tempTotal = 0
       while(x<this.priceList.length){
         this.priceList[x] = parseFloat(this.priceList[x]);
-        total = total + this.priceList[x];
+        tempTotal = tempTotal + this.priceList[x];
         x++
        };
-      
-      this.total = total.toFixed(2);
-      
-
-  
+     
+      this.total = tempTotal.toFixed(2);
+      this.intTotal = tempTotal;
+      console.log(tempTotal);
+      this.taxCalc();
+      this.Total();
     })
-    
+  } 
+
+  // Calculates tax
+  taxCalc(){
+    let localTax = this.intTotal*0.05;
+    this.taxTotal = localTax.toFixed(2);
+    this.intTaxTotal = localTax
+  }
+  //Calculates final total
+  Total(){
+    let localTotal = this.intTaxTotal + this.intTotal;
+    this.finalTotal = localTotal.toFixed(2);
+    this.intFinalNumber = localTotal
   }
 }
