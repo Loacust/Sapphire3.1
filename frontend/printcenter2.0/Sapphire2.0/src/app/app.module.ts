@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ApphomeComponent } from './components/apphome/apphome.component';
 import { PortalComponent } from './components/portal/portal.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { QRCodeModule } from 'angular2-qrcode';
 import { HttpClientModule } from '@angular/common/http';
@@ -37,20 +37,20 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
     ApphomeComponent,
     PortalComponent,
     RegistrationComponent,
-  NavbarComponent,
-     PhotosComponent,
-     UploadComponent,
-     LibraryComponent,
-     EditorComponent,
-     EditPageComponent,
-     OrderformComponent,
-     FooterComponent,
-     CheckoutComponent,
-     SalesComponent,
-     ThankyouComponent,
-   
+    NavbarComponent,
+    PhotosComponent,
+    UploadComponent,
+    LibraryComponent,
+    EditorComponent,
+    EditPageComponent,
+    OrderformComponent,
+    FooterComponent,
+    CheckoutComponent,
+    SalesComponent,
+    ThankyouComponent,
 
-     
+
+
   ],
   imports: [
     BrowserModule,
@@ -62,13 +62,13 @@ import { ThankyouComponent } from './components/thankyou/thankyou.component';
     HttpClientModule,
     FormsModule,
 
-    
+
   ],
 
   providers: [LibraryComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  }
-  
+export class AppModule {
+}
+
 

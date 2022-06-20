@@ -127,10 +127,13 @@ export class CheckoutComponent implements OnInit {
       let i = 0
       for (i = 0; i < wholeList[0].length; i++) {
         if (wholeList[0][i].email == this.data) {
-          singleOrder.push(wholeList[0][i]);
+          singleOrder.push(wholeList[0][i].price);
         }
-      this.priceList[i] = singleOrder[i].price
+      
+       this.priceList=singleOrder;
+      
        }
+       console.log(this.priceList)
       var x = 0
       let tempTotal = 0
       while(x<this.priceList.length){
