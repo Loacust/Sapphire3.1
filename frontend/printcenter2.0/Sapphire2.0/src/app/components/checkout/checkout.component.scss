@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
 $fontSans : 'Montserrat', sans-serif;
 $fontSerif : 'Droid Serif', serif;
 
@@ -9,13 +9,19 @@ $fontSerif : 'Droid Serif', serif;
 }
 body{
   background-color: beige;
-  border: solid 3px black;
+  border: solid 2px black;
+  border-radius: 7px;
 }
 
 h1{
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:'Dancing Script', cursive;;
   font-weight: bold;
   text-align: center;
+  font-size: 35px;
+}
+p{
+  font-family:'Dancing Script', cursive;;
+  font-weight: bold;
 }
 /* TOTAL AND CHECKOUT  */
 .subtotal {
@@ -36,7 +42,7 @@ h1{
      
     }
     .label {
-       font-family: $fontSans;
+       font-family:'Dancing Script', cursive;;
       font-size: .85em;
       text-transform: uppercase;
       color: #777;
