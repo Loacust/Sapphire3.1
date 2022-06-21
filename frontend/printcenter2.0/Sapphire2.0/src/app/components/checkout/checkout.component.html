@@ -1,4 +1,5 @@
-<div class="heading cf">
+<body>
+  <div class="heading cf">
   <h1>My Cart</h1>
   
 
@@ -15,7 +16,8 @@
         <p>Quantity : {{item.quantity}}</p>
         <p>Size: {{item.size}}</p>
         <p>Price: ${{item.price}}</p>
-        <button class="trashButton" type="button" onclick="remove()" title="Remove photo">
+        
+        <button class="trashButton" type="button" (click)="deleteOrder(item.orderid)" title="Remove Order">
         <img src="../../../assets/trash3-fill.svg" class="trashCan">
     </button>
     </div>
@@ -44,3 +46,5 @@
 <div *ngIf="failure">
   <h1>Some Error is taken place inside the payment</h1>
 </div>
+</div>
+</body>

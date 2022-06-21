@@ -117,6 +117,7 @@ export class CheckoutComponent implements OnInit {
       }
     })
     this.fullOrder = singleOrder;
+  
   }
   priceTotal(){
     let wholeList: any = [];
@@ -133,7 +134,7 @@ export class CheckoutComponent implements OnInit {
        this.priceList=singleOrder;
       
        }
-       console.log(this.priceList)
+       
       var x = 0
       let tempTotal = 0
       while(x<this.priceList.length){
@@ -144,7 +145,6 @@ export class CheckoutComponent implements OnInit {
      
       this.total = tempTotal.toFixed(2);
       this.intTotal = tempTotal;
-      console.log(tempTotal);
       this.taxCalc();
       this.Total();
     })
@@ -163,7 +163,11 @@ export class CheckoutComponent implements OnInit {
     this.intFinalNumber = localTotal
   }
 
-  remove(){
-    
+  deleteOrder(orderid: number) {
+    console.log(orderid);
+    this.checkout.deleteService(orderid);
+   
+
+
   }
 }

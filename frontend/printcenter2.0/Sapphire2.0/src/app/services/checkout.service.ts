@@ -30,4 +30,9 @@ export class CheckoutService {
     price_download(){
       return this.http.get('http://localhost:4000/priceRetrieval')
     }
-}
+
+    deleteService(orderid: number){
+      return this.http.delete('http://localhost:4000/orderDelete/'+ orderid).subscribe(result =>{
+       console.log(result);
+   }); 
+}}

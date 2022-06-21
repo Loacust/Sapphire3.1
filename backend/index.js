@@ -193,6 +193,28 @@ app.get('/orderRetrieval', function (req, res,) {
     });
 });
 
+//OrderDelete
+app.delete('/orderDelete/:orderid', function (req, res){
+    let orderid = req.params.orderid;
+    
+    
+    UserOrders.findByPk(orderid).then(function(result){
+        console.log(orderid)
+        if( result != null){
+            result.destroy().then(function(){
+                res.redirect('/')
+            }).catch(function(err){
+                res.send(err);
+            });
+        }
+        else{
+            res.send('image not found');
+        }
+    }).catch(function (err){
+        console.log('you failed');
+    })
+})
+
 //Checkout Post
 app.post('/checkout', async(req, res) => {
     try {

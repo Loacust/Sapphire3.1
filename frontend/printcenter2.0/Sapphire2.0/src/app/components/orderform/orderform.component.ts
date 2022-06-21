@@ -14,7 +14,7 @@ export class OrderformComponent implements OnInit {
   data: string = this.usersService.current_user_email(); //retrieves and stores current user email
   imageFile: any = []; //AUTODOWNLOAD
   orders:any;
-  size: any = ['4x4 $0.50 each','4x6 $0.55 each','5x7 $0.60 each','8x8 $0.75 each','Wallet $0.25 each','8x10 $1.00 each'];
+  size: any = ['4x4 $0.50 each','4x6 $0.55 each','5x7 $0.60 each','8x8 $0.75 each','Wallet $0.25','8x10 $1.00 each'];
   quantity: number[] = [1,2,3,4,5,6,7,8,9,10];
   price!: string;
   
@@ -85,7 +85,7 @@ priceMethod(quantity: number, size: string){
 
       return total
     }
-    if (size === "Wallet $0.25 each"){
+    if (size === "Wallet $0.25"){
       let total = (quantity*0.25).toFixed(2)
 
       return total

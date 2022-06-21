@@ -7,7 +7,7 @@ const UserOrders=config.define('userorder', {
      email: {
         type: Sequalize.STRING,
         allowNull: false,
-        primaryKey: true
+        
     },
     photoid: {
         type: Sequalize.STRING,
@@ -25,6 +25,12 @@ const UserOrders=config.define('userorder', {
     price:{
         type: Sequalize.NUMBER,
         allowNull: false,  
+
+    },
+    orderid:{
+        type: Sequalize.NUMBER,
+        allowNull: true,
+        primaryKey: true,
 
     }
 

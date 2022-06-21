@@ -4,7 +4,8 @@ import Cropper from "cropperjs";
 import { Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { UsersService } from 'src/app/services/users.service';
-import * as blobUtil from "blob-util"
+import * as blobUtil from "blob-util";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class EditorComponent implements OnInit {
 
 
 
-  public constructor(public fb: FormBuilder, private image: EditortransferService, private usersService: UsersService) {
+  public constructor(public fb: FormBuilder, private image: EditortransferService, private usersService: UsersService, private router: Router) {
     this.data = this.usersService.current_user_email();
 
     //FORM FOR IMAGE UPLOAD
@@ -92,12 +93,13 @@ export class EditorComponent implements OnInit {
       f.append(k, formData[k]);
     }
     this.usersService.photo_upload(f).subscribe((result) => {
-      alert("Upload Successful")
+      alert("Crop Successful");
+      this.router.navigate(['photos']);
     }, (err) => {
       alert("Upload Failed");
       console.log(err)
     });
-
+    
 
   }
 
