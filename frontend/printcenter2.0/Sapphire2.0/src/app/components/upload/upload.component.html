@@ -4,14 +4,16 @@
   
   <form [formGroup]="myForm" >
     <div>
-        <div *ngIf="filePath && filePath !== ''">
-        <img [src]="filePath" width="100%" [alt]="myForm.value.name">
+      <div *ngIf="filePath && filePath !== ''">
+        <img [src]="filePath" width="100%"  [alt]="myForm.value.name">
         </div>
-        <label>Choose a photo</label>
+        <div *ngIf="filePath == null">
+          <img src="./../../../assets/image-placeholder-500x500.jpg" height="300px">
+        </div>        
         <input type="file" accept=".jpg,.svg,.png,.raw,.jpeg" (change)="onFileChange($event)" (change)="imagePreview($event)">
     
         <button type="submit" (click)="upload()">Upload</button> 
-      </div>
+        </div>
       
   </form>
 
