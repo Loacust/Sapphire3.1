@@ -24,9 +24,9 @@ const routes: Routes = [
   { path: 'editor', component: EditorComponent, canActivate: [AuthguardService] },
   { path: 'edit-page', component: EditPageComponent, canActivate: [AuthguardService] },
   { path: 'orderform', component: OrderformComponent, canActivate: [AuthguardService]},
-  { path: 'checkout', component: CheckoutComponent},
-  { path: 'sales', component: SalesComponent },
-  { path: 'thankyou', component: ThankyouComponent}
+  { path: 'checkout', component: CheckoutComponent,canActivate: [AuthguardService]},
+  { path: 'sales', component: SalesComponent, canActivate: [AuthguardService] },
+  { path: 'thankyou', component: ThankyouComponent, canActivate: [AuthguardService]}
 ];
 
 @NgModule({

@@ -162,4 +162,8 @@ export class CheckoutComponent implements OnInit {
     this.finalTotal = localTotal.toFixed(2);
     this.intFinalNumber = localTotal
   }
+
+  remove(){
+    
+  }
 }

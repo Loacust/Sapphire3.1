@@ -14,7 +14,7 @@ export class OrderformComponent implements OnInit {
   data: string = this.usersService.current_user_email(); //retrieves and stores current user email
   imageFile: any = []; //AUTODOWNLOAD
   orders:any;
-  size: any = ['4x4','4x6','5x7','8x8','Wallet','8x10'];
+  size: any = ['4x4 $0.50 each','4x6 $0.55 each','5x7 $0.60 each','8x8 $0.75 each','Wallet $0.25 each','8x10 $1.00 each'];
   quantity: number[] = [1,2,3,4,5,6,7,8,9,10];
   price!: string;
   
@@ -43,11 +43,7 @@ export class OrderformComponent implements OnInit {
     this.imageFile = imageList;
   }
 
-/*priceChange(event:any){
-  let currentSelectedSize =this.orders.size;
-  console.log(currentSelectedSize);
 
-}*/
 addToCart(image: string){
   let price = this.priceMethod(this.orders.value.quantity, this.orders.value.size);
   this.orders.patchValue({
@@ -64,32 +60,32 @@ addToCart(image: string){
   
 }
 priceMethod(quantity: number, size: string){
-    if (size === "4x4"){
+    if (size === "4x4 $0.50 each"){
       let total = (quantity*0.500).toFixed(2);
       
       return total
     }
-    if (size === "4x6"){
+    if (size === "4x6 $0.55 each"){
       let total = (quantity*0.55).toFixed(2)
 
       return total
     }
-    if (size === "5x7"){
+    if (size === "5x7 $0.60 each"){
       let total = (quantity*0.60).toFixed(2)
 
       return total
     }
-    if (size === "8x8"){
+    if (size === "8x8 $0.75 each"){
       let total = (quantity*0.75).toFixed(2)
 
       return total
     }
-    if (size === "8x10"){
+    if (size === "8x10 $1.00 each"){
       let total = (quantity*1.00).toFixed(2)
 
       return total
     }
-    if (size === "Wallet"){
+    if (size === "Wallet $0.25 each"){
       let total = (quantity*0.25).toFixed(2)
 
       return total

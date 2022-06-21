@@ -1,5 +1,7 @@
 <div class="heading cf">
   <h1>My Cart</h1>
+  
+
   <div class="container">
     <div class="card" *ngFor="let item of fullOrder">
       <div class="row">
@@ -13,6 +15,9 @@
         <p>Quantity : {{item.quantity}}</p>
         <p>Size: {{item.size}}</p>
         <p>Price: ${{item.price}}</p>
+        <button class="trashButton" type="button" onclick="remove()" title="Remove photo">
+        <img src="../../../assets/trash3-fill.svg" class="trashCan">
+    </button>
     </div>
     </div>
   </div>

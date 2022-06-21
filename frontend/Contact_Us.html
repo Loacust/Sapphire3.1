@@ -34,7 +34,7 @@
                         <a class="colorme" aria-current="page" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item" id="sign">
-                        <a class="colorme" href="#">SignIn/SignUp</a>
+                        <a class="colorme" href="http://localhost:4200/portal">SignIn/SignUp</a>
                     </li>
                 </ul>
             </div>
@@ -42,7 +42,7 @@
     </nav>
 
     <div class="contact1">
-        Have a question regarding our kiosks or online services? Fill out the form below.
+        Have a question or comment regarding our kiosks or online services? Fill out the form below.
     </div>
     <div>
         <div class="container">
@@ -50,7 +50,7 @@
                 <div class="col-4">
                 </div>
                 <div class="col-4">
-                    <form id="form1">
+                    <form action="http://127.0.0.1:4000/sendInfo" method="POST" id="form1">
                         <label for="email">Email:</label><br>
                         <input type="email" id="email" name="email"><br>
                         <label for="fname">First Name:</label><br>
@@ -59,7 +59,7 @@
                         <input type="text" id="lname" name="lname"><br>
                         <label for="comments">Comments:</label><br>
                         <textarea type="text" class="input" id="comments" name="comments"></textarea><br>
-                        <input type="submit">
+                        <input type="submit" value="Submit">
                     </form>
                 </div>
                 <div class="col-4">

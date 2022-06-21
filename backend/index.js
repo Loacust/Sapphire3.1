@@ -12,8 +12,9 @@ const { fs } = require('fs');
 const stripe = require('stripe')('sk_test_51L9uu6ARDzLUzTUFuFM7G0k5WnNRiCExPjo6G7a7L2xdPKpwqeNpOHzOgE2ksN8ZiScgOwiTnljF4JU3lwrXaiqb005hCIv9hk')
 const bodyparser = require('body-parser');
 const UserOrders = require('./Models/orders');
+const ContactUsData = require('./Models/comments')
 
-app.use(bodyparser.urlencoded({entended:false}));
+app.use(bodyparser.urlencoded({entended:true}));
 app.use(cors());
 app.use(express.static('backend'))
 app.use('/uploadimages', express.static('uploadedimages'));
@@ -116,13 +117,27 @@ app.post('/imagePost', multer({ storage }).single('image'), function (req, res) 
 
     Userphotos.create(upload_Data).then(function (result) {
         res.status(200).send(result);
+        
     }).catch(function (err) {
         res.status(500).send(err);
     });
 
 })
 
-
+// Questions and Complaints
+app.post('/sendInfo', function(req,res){
+    let ContactData = {
+        email: req.body.email,
+        fname: req.body.fname,
+        lname: req.body.lname,
+        comments: req.body.comments,
+    }
+    ContactUsData.create(ContactData).then(function(result){
+    res.status(200).send(result);
+    }).catch(function(err){
+    res.status(500).send(err);
+});
+});
 //Delete Image from database *not server
 app.delete('/:image', function (req, res){
     let image = req.params.image;
