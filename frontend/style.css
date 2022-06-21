@@ -1,7 +1,3 @@
-#navbarNav{
-   font-size: larger;
-   font-weight: bold;
-}
 .picture{
         width: 100%;
     }
@@ -15,7 +11,7 @@
 .contact1{
     text-align: center;
     font-size: 50px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family:'Dancing Script', cursive;
     padding: 30px ;
     color:#4288AE;
     background-color: beige;
@@ -32,6 +28,7 @@ textarea{
     color: #716671;
     font-size: 40px;
     background-color:beige;
+    font-family:'Dancing Script', cursive;
 }
 body{
     background-color: beige;
@@ -55,3 +52,7 @@ body{
     margin-left: 1100px;
 }
 }
+#fontLink{
+    font-family:'Dancing Script', cursive;
+}
+

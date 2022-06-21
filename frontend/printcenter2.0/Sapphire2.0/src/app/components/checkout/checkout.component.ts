@@ -166,7 +166,7 @@ export class CheckoutComponent implements OnInit {
   deleteOrder(orderid: number) {
     console.log(orderid);
     this.checkout.deleteService(orderid);
-   
+    location.reload();
 
 
   }
